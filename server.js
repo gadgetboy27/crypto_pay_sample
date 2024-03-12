@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
+require('dotenv').config()
 // This is your test secret API key.
 const Stripe = require("stripe");
-const stripe = Stripe('sk_test_51NRzpwCIjyWqrxl4QEulZiR6LjQ0KEB5JVogEIyEZUF5ZJZ2EiBMrPen5O98FHtFY2DFCRRQlwuZBk4CmkbfPz0t00DOLEia5G');
+const stripe = Stripe(process.env.STRIPE_PRIVATE_KEY);
 const OnrampSessionResource = Stripe.StripeResource.extend({
   create: Stripe.StripeResource.method({
     method: 'POST',

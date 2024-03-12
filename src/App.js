@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { loadStripeOnramp } from "@stripe/crypto";
-
+import 'dotenv/config'
 import { CryptoElements, OnrampElement } from './StripeCryptoElements';
 import "./App.css";
 
 // Make sure to call loadStripeOnramp outside of a component’s render to avoid
 // recreating the StripeOnramp object on every render.
 // This is your test publishable API key.
-const stripeOnrampPromise = loadStripeOnramp("pk_test_51NRzpwCIjyWqrxl4dbQ0dkQC3ZsqKHY35KtsUGjg5Dx2uGoHEOL0oFuUlyRNp3bQ25DJbb5YRYxD2ZWyL4U4FeOL00LRJTO8we");
+const stripeOnrampPromise = loadStripeOnramp(process.env.STRIPE_TEST_API);
 
 export default function App() {
   const [clientSecret, setClientSecret] = useState("");
